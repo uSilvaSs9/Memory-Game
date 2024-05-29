@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0>
+<title>Jogo da Memória</title>
+<style>
+    .grid {
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .card {
+        width: 100px;
+        height: 100px;
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+        display: flex;
+        align-items:  center;
+        justify-content: center;
+        font-size: 50px;
+        cursor: pointer;
+    }
+    .hidden {
+        background-color: #000;
+        color: #000;
+    }
+</style>
+</head>
+<body>
+    <div id="game" class="grid">
+        <!-- As cartas serão inseridas aqui pelo JavaScript -->
+    </div>
+
+    <script>
+    // Array com os pares de ícones (ou imagens)
+    const icons = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'];
+    let cards = [... icons, ...icons]; // Duplica o array para criar os pares 
+
+    // Função para embaralhar as cartas
+    function shuffle(array) { array.sort(() => Math.random() - 0.5);
+    }
+
+    // Função para criar as cartas no HTML
+    function createCards() {
+        shuffle(cards);
+        const game=
+        document.getElementById('game')
+        game.innerHTML = ''; // Limpa o tabuleiro
+        cards.forEach(icon => {
+            const cardElement = 
+            document.createElement('div');
+            cardElement.classList.add('card', 'hidden');
+            cardElement.textContent = icon; 
+            cardElement.addEventListener('click', () => {
+                // Adicione aqui a lógica para virar a carta 
+
+                cardElement.classList.toggle('hidden');
+            });
+            game.appendChild(cardElement);
+        });
+    }
+
+    // Inicializa o jogo
+    createCard();
+    </script>
+
+</body>
+</html>
+
+            }
+        })
+    }
+
